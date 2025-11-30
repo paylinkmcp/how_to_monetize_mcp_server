@@ -80,9 +80,15 @@ def main(
 
     @app.call_tool()
     @require_payment(
-        {
-            "add": 0.10,
-            "subtract": 0.20,
+            {
+            "add": {
+                "base_cost": 0.10,
+                "require_evaluation": True,
+            },
+            "subtract": {
+                "base_cost": 0.10,
+                "require_evaluation": True,
+            },
         }
     )
     async def call_tool(tool_name: str, arguments: dict[str, Any]) -> list[TextContent]:
